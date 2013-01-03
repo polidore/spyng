@@ -4,7 +4,7 @@ Spyng (pronounced sping) is an AngularJS module that helps you create data for u
 
 # Design
 
-This will be an angular directie that you can apply to most elements.  You will get callbacks for various behaviors on these elements like click, mouse over, etc.  
+This will be an angular directive that you can apply to most elements.  You will get callbacks for various behaviors on these elements like click, mouse over, etc.  
 
 ## Markup
 
