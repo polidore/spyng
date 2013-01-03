@@ -35,7 +35,7 @@ angular.module('yourApp',['$spyngProvider'], function($spyngProvider) {
     userId: yourAppsContext.username
   });
   $spyngProvider.spy(function(secret) {
-    persister.save({
+    yourPersister.save({
       timeStamp: secret.timeStamp,
       appName: secret.context.appName,
       userId: secret.context.userId,
