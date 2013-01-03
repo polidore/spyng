@@ -30,19 +30,26 @@ Callback on a mouseover with the duration
 
 ```javascript
 angular.module('yourApp',['$spyngProvider'], function($spyngProvider) {
-  $spyngProvider.context({
+  //this object will be delivered each time for convenience 
+  //and to allow sharing of the callback function across modules
+
+  $spyngProvider.context({ 
     appName: 'My App',
     userId: yourAppsContext.username
   });
-  $spyngProvider.spy(function(secret) {
-    yourPersister.save({
-      timeStamp: secret.timeStamp,
-      appName: secret.context.appName,
-      userId: secret.context.userId,
-      eventType: secret.eventType,
-      eventId: secret.eventId
-    });
+
+  $spyngProvider.spy({
+    locationChange: true, //if HTML5 location changes, call back
+    focusChange: true,    //if browser window loses / gains focus, call back
+    callback: function(secret) {
+      yourPersister.save({
+        timeStamp: secret.timeStamp,
+        appName: secret.context.appName,
+        userId: secret.context.userId,
+        eventType: secret.eventType,
+        eventId: secret.eventId
+      });
+    }
   });
 });
-
 ```
