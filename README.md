@@ -1,12 +1,12 @@
 # Spyng
 
-Spyng (pronounced sping) is an AngularJS module that helps you create data for usability analysis
+Spyng (pronounced sping) is an AngularJS module that helps you create data for usability analysis.
 
 # Design
 
 This will be an angular directie that you can apply to most elements.  You will get callbacks for various behaviors on these elements like click, mouse over, etc.  
 
-# Examples
+## Markup
 
 Call back on your event handler whenever someone clicks a specific button
 
@@ -26,4 +26,23 @@ Callback on a mouseover with the duration
 <div id="importantPlace" spyng='event=mouseover'/>
 ```
 
+## Code
 
+```javascript
+angular.module('yourApp',['$spyngProvider'], function($spyngProvider) {
+  $spyngProvider.context({
+    appName: 'My App',
+    userId: yourAppsContext.username
+  });
+  $spyngProvider.spy(function(secret) {
+    persister.save({
+      timeStamp: secret.timeStamp,
+      userId: secret.context.userId,
+      appName: secret.context.appName
+      eventType: secret.eventType,
+      eventId: secret.eventId
+    });
+  });
+});
+
+```
